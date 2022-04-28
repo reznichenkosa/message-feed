@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    overflow: hidden;
+}
+
+body[data-mode='light'] {
+    --colors-text: hsl(200, 15%, 8%);
+    --colors-text-alt: hsl(0, 0%, 100%);
+    --colors-bg: hsl(0, 0%, 90%);
+    --colors-ui-base: hsl(0, 0%, 100%);
+    --colors-ui-alt: #E5E5E5;
+    --colors-ui-primary: #0088EE;
+    --colors-calendar-item: hsl(0, 0%, 80%);
+    --colors-calendar-past: hsl(113, 76%, 31%);
+    --colors-logo: hsl(230, 100%, 63%);
+    --colors-logo-text: hsl(0, 0%, 100%);
+    --colors-btn: hsl(230, 100%, 63%);
+    --colors-btn-hover: hsl(0, 0%, 100%);
+    background-color: var(--colors-ui-base);
+    color: var(--colors-text);
+}
+
+body[data-mode='dark'] {
+    --colors-text: hsl(0, 0%, 100%);
+    --colors-bg: hsl(207, 26%, 17%);
+    --colors-ui-base: hsl(209, 23%, 22%);
+    --colors-ui-alt: hsl(0, 0%, 100%);
+    --colors-calendar-item: hsl(209, 14%, 34%);
+    --colors-calendar-past: hsl(0, 0%, 52%);
+    --colors-logo: hsl(230, 100%, 63%);
+    --colors-btn: hsl(0, 0%, 100%);
+    --colors-btn-hover: hsl(230, 100%, 63%);
+    background-color: var(--colors-ui-base);
+    color: var(--colors-text);
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+#root {
+    display: flex;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 1 auto;
+}

@@ -1,0 +1,44 @@
+.sidebar {
+    min-width: 350px;
+    min-height: 100%;
+    padding: 0px 30px;
+    border-right: 1px solid var(--colors-ui-alt);
+}
+
+.title {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.params {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 11px;
+}
+
+.paramsBtn {
+    background-color: transparent;
+    border: 1px solid var(--colors-ui-primary);
+    color: var(--colors-ui-primary);
+    border-radius: 2px;
+    padding: 8px 10px;
+    margin-right: 10px;
+    line-height: 11px;
+    cursor: pointer;
+    &:last-child {
+        margin-right: 0;
+    }
+    &:hover {
+        border: 1px solid #E5E5E5;
+    }
+}
+
+.paramsSelect {
+    margin-top: 10px;
+    background-color: transparent;
+    border: 1px solid var(--colors-ui-primary);
+    color: var(--colors-ui-primary);
+    padding: 8px 10px;
+}

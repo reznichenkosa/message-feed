@@ -1,10 +1,12 @@
 import React from 'react';
+import MessagesList from '../../components/MessagesList/MessagesList';
+import styles from './HomePage.module.scss';
 
 const HomePage = () => {
     return (
-        <div>
-            
-        </div>
+        <section className={styles.home}>
+            <MessagesList />
+        </section>
     );
 };
 

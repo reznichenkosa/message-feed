@@ -1,0 +1,11 @@
+.workArea {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.main {
+    height: 200px;
+    padding: 30px 60px;
+    overflow-y: scroll;
+}

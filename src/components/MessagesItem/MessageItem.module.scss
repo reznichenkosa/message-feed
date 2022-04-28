@@ -1,0 +1,127 @@
+.message {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--colors-ui-alt);
+    padding: 20px 0;
+    width: 866px;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.topLeft {
+    display: flex;
+}
+
+.avatar {
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    img {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+.author {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #808080;
+}
+
+.comment {
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 3px;
+    font-style: italic;
+}
+
+.topRight {
+    display: flex;
+}
+
+.groupBtns {
+    margin-right: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    background-color: transparent;
+    border: 1px solid var(--colors-ui-primary);
+    color: var(--colors-ui-primary);
+    border-radius: 2px;
+    padding: 8px 10px;
+    margin-right: 10px;
+    font-size: 11px;
+    line-height: 11px;
+    cursor: pointer;
+    &:last-child {
+        margin-right: 0;
+    }
+    &:hover {
+        border: 1px solid #E5E5E5;
+    }
+    
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        margin-right: 4px;
+        cursor: pointer;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.middle {
+    display: flex;
+    margin-top: 3px;
+}
+
+.date {
+    color: #808080;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.content {
+    line-height: 22px;
+    img {
+        display: block;
+    }
+}
+
+.nextLink {
+    color: #808080;
+    font-size: 12px;
+    text-decoration: none;
+    &:hover {
+        color: var(--colors-ui-primary);
+    }
+}
+
+.bottom {
+    margin-top: 7px;
+
+    span {
+        color: #CDCDCD;
+        font-size: 12px;
+        margin-left: 10px;
+        cursor: pointer;
+        &:hover {
+            color: var(--colors-ui-primary);
+        }
+    }
+}

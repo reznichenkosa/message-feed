@@ -1,10 +1,13 @@
-import { MESSAGES_FETCHED, MESSAGES_FETCHING, MESSAGES_FETCHING_ERROR, SET_SORT_PARAM, TOGGLE_FAVORITE_MESSAGE } from "./message-actions";
+import { MESSAGES_FETCHED, MESSAGES_FETCHING, MESSAGES_FETCHING_ERROR, SET_FILTER, SET_SORT_PARAM, TOGGLE_FAVORITE_MESSAGE } from "./message-actions";
+
+const localStorageData = JSON.parse(localStorage.getItem("data"));
 
 const initialState = {
-    messages: [],
+    messages: localStorageData?.messages || [],
     messagesLoadingStatus: 'idle',
-    favorite: [],
-    sort: 'new',
+    favorite: localStorageData?.favorite || [],
+    sort: 'old',
+    filter: 'all',
 }
 
 export const messageReducer = (state = initialState, action) => {
@@ -16,11 +19,18 @@ export const messageReducer = (state = initialState, action) => {
             };
 
         case MESSAGES_FETCHED: 
+            if (action.payload) {
+                return {
+                    ...state,
+                    messagesLoadingStatus: 'idle',
+                    messages: state.messages.concat(action.payload)
+                };
+            }
             return {
                 ...state,
                 messagesLoadingStatus: 'idle',
-                messages: state.messages.concat(action.payload)
             };
+           
         
         case MESSAGES_FETCHING_ERROR: 
             return {
@@ -29,7 +39,7 @@ export const messageReducer = (state = initialState, action) => {
             }
 
         case TOGGLE_FAVORITE_MESSAGE: 
-            if (state.favorite.includes(action.payload)) {
+            if (!state.favorite.includes(action.payload)) {
                 return {
                     ...state,
                     favorite: state.favorite.concat(action.payload)
@@ -46,6 +56,12 @@ export const messageReducer = (state = initialState, action) => {
                 sort: action.payload
             }
         
+        case SET_FILTER:
+            return {
+                ...state,
+                filter: action.payload
+            }
+
         default:
             return state;
     }
