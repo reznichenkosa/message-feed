@@ -99,6 +99,12 @@
 .content {
     line-height: 22px;
     img {
+        height: 300px;
+        display: block;
+    }
+    video {
+        height: 300px;
+        min-width: 500px;
         display: block;
     }
 }

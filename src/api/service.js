@@ -1,10 +1,20 @@
 import axios from "axios";
 
-export const getMessages = async (messageId = 0) => {
+export const getMessages = async (messageId = 0, oldMessages = false) => {
     const formData = new FormData();
     formData.append('actionName', 'MessagesLoad')
     formData.append('messageId', messageId);
 
+    // if (!oldMessages) {
+    //     formData.append('messageId', messageId);
+    // } else {
+    //     formData.append('oldMessages', oldMessages)
+    // }
+
+    if (oldMessages) {
+        formData.append('oldMessages', oldMessages);
+    }
+    
     try {
         const response = await axios.post('http://f0665380.xsph.ru/', formData, {
             headers: {

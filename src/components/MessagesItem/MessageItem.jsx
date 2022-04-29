@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './MessageItem.module.scss';
-import contentImg from '../../assets/img/content-img.png';
 import avatar from '../../assets/img/avatar.png';
 import sendMessagesIcon from '../../assets/icons/sendMessage.png';
 import settingsIcon from '../../assets/icons/settings.png';
@@ -11,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavoriteMessage } from '../../store/message/message-actions';
 import { motion } from 'framer-motion';
 
-const MessageItem = ({author, content, channel, id, date}) => {
+const MessageItem = ({author, content, channel, id, date, attachments}) => {
 
     const {favorite} = useSelector(state => state.messages);
     const dispatch = useDispatch();
@@ -22,7 +21,6 @@ const MessageItem = ({author, content, channel, id, date}) => {
     const toggleFavorite = () => {
         dispatch(toggleFavoriteMessage(id));
     }
-
     return (
         <motion.div transition={{duration: .8}}
                     initial={{opacity: 0, x: 100}} 
@@ -64,7 +62,13 @@ const MessageItem = ({author, content, channel, id, date}) => {
                     <p className={styles.text}>{content}</p>
                     {/* eslint-disable-next-line */}
                     <a href="#" className={styles.nextLink}>Далее</a>
-                    <img src={contentImg} alt="content-img" />
+                    {attachments && attachments.map(item => {
+                        if (item.type === 'image') {
+                            return <img key={item.url} src={item.url} alt="content-img" />
+                        }
+                        return <video key={item.url} controls="controls"> <source src={item.url}/></video>
+                    })}
+
                 </div>
             </div>
             <div className={styles.bottom}>

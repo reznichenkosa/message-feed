@@ -14,9 +14,9 @@ export const toggleFavoriteMessage = (id) => ({type: TOGGLE_FAVORITE_MESSAGE, pa
 export const setSortParam = (param) => ({type: SET_SORT_PARAM, payload: param});
 export const setFilter = (filter) => ({type: SET_FILTER, payload: filter});
 
-export const loadMessages = (messageId) => (dispatch) => {
+export const loadMessages = (messageId, oldMessages) => (dispatch) => {
     dispatch(messagesFetching());
-    getMessages(messageId)
+    getMessages(messageId, oldMessages)
     .then(data => dispatch(messagesFetched(data.Messages)))
     .catch(err => dispatch(messagesFetchingError()));
 }

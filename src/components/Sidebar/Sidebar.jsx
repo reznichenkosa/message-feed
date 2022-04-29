@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter, setSortParam } from '../../store/message/message-actions';
+import { loadMessages, setFilter, setSortParam } from '../../store/message/message-actions';
 import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
@@ -16,6 +16,10 @@ const Sidebar = () => {
         dispatch(setFilter(param));
     }
 
+    const loadOldMessages = () => {
+        dispatch(loadMessages(0, true));
+    }
+
     return (
         <section className={styles.sidebar}>
             <div className={styles.title}>
@@ -28,6 +32,7 @@ const Sidebar = () => {
                     <option value="old">Сначала старые</option>
                     <option value="new">Сначала новые</option>
                 </select>
+                <button onClick={loadOldMessages} className={styles.paramsBtn}>Загрузить старые сообщения</button>
             </div>
         </section>
     );

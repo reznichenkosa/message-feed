@@ -1,5 +1,5 @@
 .sidebar {
-    min-width: 350px;
+    width: 350px;
     min-height: 100%;
     padding: 0px 30px;
     border-right: 1px solid var(--colors-ui-alt);
@@ -20,6 +20,7 @@
 
 .paramsBtn {
     background-color: transparent;
+    margin-top: 10px;
     border: 1px solid var(--colors-ui-primary);
     color: var(--colors-ui-primary);
     border-radius: 2px;
