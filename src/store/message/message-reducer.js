@@ -15,7 +15,7 @@ export const messageReducer = (state = initialState, action) => {
         case MESSAGES_FETCHING:
             return {
                 ...state,
-                messagesLoadingStatus: 'loading'    
+                messagesLoadingStatus: 'loading',    
             };
 
         case MESSAGES_FETCHED: 
@@ -23,7 +23,7 @@ export const messageReducer = (state = initialState, action) => {
                 return {
                     ...state,
                     messagesLoadingStatus: 'idle',
-                    messages: state.messages.concat(action.payload)
+                    messages: state.messages.concat(action.payload.filter(message => state.messages.every(item => item.id !== message.id)))
                 };
             }
             return {

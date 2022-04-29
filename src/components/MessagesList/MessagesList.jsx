@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import React from 'react';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMessages } from '../../api/service';
 import { loadMessages } from "../../store/message/message-actions";
 import MessageItem from '../MessagesItem/MessageItem';
 
@@ -17,19 +17,18 @@ const MessagesList = () => {
         dispatch(loadMessages(messages[messages.length-1]?.id));
         // eslint-disable-next-line 
     },[]);
-    // console.log(messages);
 
-    // every 5 second update messages
+    // every 5 second update messages, but the backend is not working properly
 
-    // useEffect(() => {
-    //   const timerId = setTimeout(() => {
-    //     console.log(messages[messages.length-1]?.id);
-    //     dispatch(loadMessages(messages[messages.length-1]?.id))}, 5000);
+    useEffect(() => {
+      const timerId = setTimeout(() => {
+        dispatch(loadMessages(messages[messages.length-1]?.id))}, 5000);
 
-    //   return () => {
-    //     clearTimeout(timerId)
-    //   }
-    // }, [messages]);
+      return () => {
+        clearTimeout(timerId)
+      }
+      // eslint-disable-next-line
+    }, [messagesLoadingStatus]);
 
     useEffect(() => {
         localStorage.setItem("data", JSON.stringify({messages, favorite}))
@@ -37,9 +36,11 @@ const MessagesList = () => {
 
     return (
         <>
-            {filteredAndSortedMessages && filteredAndSortedMessages.map(item => 
-                <MessageItem key={item.id} {...item}/>
-            )}
+            <AnimatePresence>
+                {filteredAndSortedMessages && filteredAndSortedMessages.map(item => 
+                    <MessageItem key={item.id} {...item}/>
+                )}
+            </AnimatePresence>
         </>
     );
 };

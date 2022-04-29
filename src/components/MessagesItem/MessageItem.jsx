@@ -9,6 +9,7 @@ import favoriteFillIcon from '../../assets/icons/favoriteFill.png';
 import hideMessageIcon from '../../assets/icons/hideMessage.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavoriteMessage } from '../../store/message/message-actions';
+import { motion } from 'framer-motion';
 
 const MessageItem = ({author, content, channel, id, date}) => {
 
@@ -23,7 +24,11 @@ const MessageItem = ({author, content, channel, id, date}) => {
     }
 
     return (
-        <div className={styles.message}>
+        <motion.div transition={{duration: .8}}
+                    initial={{opacity: 0, x: 100}} 
+                    animate={{opacity: 1, x: 0}} 
+                    exit={{opacity: 0, x: 100}} 
+                    className={styles.message}>
             <div className={styles.top}>
                 <div className={styles.topLeft}>
                     <div className={styles.avatar}>
@@ -57,6 +62,7 @@ const MessageItem = ({author, content, channel, id, date}) => {
                 <div className={styles.date}>{formatDate}</div>
                 <div className={styles.content}>
                     <p className={styles.text}>{content}</p>
+                    {/* eslint-disable-next-line */}
                     <a href="#" className={styles.nextLink}>Далее</a>
                     <img src={contentImg} alt="content-img" />
                 </div>
@@ -65,7 +71,7 @@ const MessageItem = ({author, content, channel, id, date}) => {
                 <span className={styles.tag}>#Новое</span>
                 <span className={styles.tag}>#Эксперт</span>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

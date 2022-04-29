@@ -5,7 +5,7 @@ import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
 
-    const {sort, filter} = useSelector(state => state.messages);
+    const {sort} = useSelector(state => state.messages);
     const dispatch = useDispatch();
 
     const handlerSelectSort = (e) => {
