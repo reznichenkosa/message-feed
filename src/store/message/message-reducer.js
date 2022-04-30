@@ -1,4 +1,4 @@
-import { MESSAGES_FETCHED, MESSAGES_FETCHING, MESSAGES_FETCHING_ERROR, SET_FILTER, SET_SORT_PARAM, TOGGLE_FAVORITE_MESSAGE } from "./message-actions";
+import { MESSAGES_FETCHED, MESSAGES_FETCHING, MESSAGES_FETCHING_ERROR, OLD_MESSAGES_FETCHED, SET_FILTER, SET_SORT_PARAM, TOGGLE_FAVORITE_MESSAGE } from "./message-actions";
 
 const localStorageData = JSON.parse(localStorage.getItem("data"));
 
@@ -24,6 +24,19 @@ export const messageReducer = (state = initialState, action) => {
                     ...state,
                     messagesLoadingStatus: 'idle',
                     messages: state.messages.concat(action.payload.filter(message => state.messages.every(item => item.id !== message.id)))
+                };
+            }
+            return {
+                ...state,
+                messagesLoadingStatus: 'idle',
+            };
+
+        case OLD_MESSAGES_FETCHED: 
+            if (action.payload) {
+                return {
+                    ...state,
+                    messagesLoadingStatus: 'idle',
+                    messages: action.payload.filter(message => state.messages.every(item => item.id !== message.id)).concat(state.messages)
                 };
             }
             return {
